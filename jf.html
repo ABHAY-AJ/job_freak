@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Left Panel Example</title>
+  <style>
+    /* CSS for the left panel */
+    #left-panel {
+      width: 200px;
+      height: 100%;
+      background: #333;
+      float: left;
+      padding-top: 20px;
+    }
+
+    /* CSS for the component links */
+    .component {
+      display: block;
+      padding: 10px;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .component:hover {
+      background: #555;
+    }
+
+    /* CSS for the active component */
+    .active {
+      background: #888;
+    }
+
+    /* CSS for the content area */
+    #content {
+      margin-left: 200px; /* adjust this value to match the width of the left panel */
+      padding: 20px;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* CSS for the content headings */
+    h2 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    /* CSS for the content paragraphs */
+    p {
+      line-height: 1.5;
+    }
+  </style>
+  <script>
+    function showContent(component) {
+      // Hide all content divs
+      var contentDivs = document.getElementsByClassName('content-div');
+      for (var i = 0; i < contentDivs.length; i++) {
+        contentDivs[i].style.display = 'none';
+      }
+
+      // Show the selected content div
+      var selectedContent = document.getElementById(component);
+      selectedContent.style.display = 'block';
+
+      // Remove 'active' class from all components
+      var components = document.getElementsByClassName('component');
+      for (var j = 0; j < components.length; j++) {
+        components[j].classList.remove('active');
+      }
+
+      // Add 'active' class to the selected component
+      var selectedComponent = document.getElementById(component + '-link');
+      selectedComponent.classList.add('active');
+    }
+  </script>
+</head>
+<body>
+  <div id="left-panel">
+    <ul>
+      <li><a href="#" id="home-link" class="component active" onclick="showContent('home')">Home</a></li>
+      <li><a href="#" id="contact-link" class="component" onclick="showContent('contact')">Contact</a></li>
+      <li><a href="#" id="information-link" class="component" onclick="showContent('information')">Information</a></li>
+      <li><a href="#" id="guide-link" class="component" onclick="showContent('guide')">Guide</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <div id="home" class="content-div" style="display: block;">
+      <h2>Home</h2>
+      <p>Welcome to the home page.</p>
+    </div>
+    <div id="contact" class="content-div" style="display: none;">
+      <h2>Contact</h2>
+      <p>Contact information goes here.</p>
+    </div>
+    <div id="information" class="content-div" style="display: none;">
+      <h2>Information</h2>
+      <p>Additional information is displayed here.</p>
+    </div>
+    <div id="guide" class="content-div" style="display: none;">
+      <h2>Guide</h2>
+      <p>Guidelines and instructions are provided in this section.</p>
+    </div>
+  </div>
+</body>
+</html>
